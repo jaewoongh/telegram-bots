@@ -6,10 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Telegram bots' });
 });
 
-router.get('/tb', function(req, res, next) {
-  res.render('index', { title: 'Foo' });
-});
-
 // MrDecisionBot (김결정)
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res, next) {
   console.log(req.body);
