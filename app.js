@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/bots');
+var bots = require('./routes/bots');
 
 var app = express();
 
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/tb/', routes);
+app.use('/tb/', bots);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
