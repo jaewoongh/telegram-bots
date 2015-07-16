@@ -22,7 +22,6 @@ router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
     botkey_short: 'AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M' });
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  console.log(req.body.message.text);
   mrDecisionBot.handleUpdate(req.body);
   res.send(req.body);
 });
