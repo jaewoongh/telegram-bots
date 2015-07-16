@@ -17,9 +17,6 @@ var sendMessage = function(botToken, chatId, text) {
       text: text
     }
   };
-  console.log('url', url);
-  console.log('chatId', chatId);
-  console.log('text', text);
   request(options, function(err, res, body) {
     if (err) console.error(err);
     else if (res.statusCode !== 200) console.log('Request failed', body);
@@ -51,10 +48,8 @@ router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
     var chatId = req.body.message.chat.id;
     sendMessage(mrDecisionBot.botToken, chatId, mrDecisionBot.helpMessage);
   } else {
-    console.log('Input', req.body.message.text);
     var response = mrDecisionBot.process(req.body);
     if (response !== null) {
-      console.log('Final response', response);
       var chatId = req.body.message.chat.id;
       sendMessage(mrDecisionBot.botToken, chatId, response);
     }
