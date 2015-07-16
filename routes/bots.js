@@ -3,15 +3,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Telegram bots' });
-});
-
-router.get('/tb/', function(req, res, next) {
-  res.render('index', { title: 'TB!' });
+  res.render('index', { title: 'Telegram bots', description: 'Only accessible via proper api call.' });
 });
 
 // MrDecisionBot (김결정)
-router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res, next) {
+router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
+  res.render('index', { title: '김결정 (MrDecisionBot)', description: 'Only accessible via proper api call.' });
+});
+router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   console.log(req.body);
   res.send(req.body);
 });
