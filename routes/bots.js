@@ -21,7 +21,8 @@ router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
     botkey_short: 'AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M' });
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  console.log('New!', req.body);
+  console.log(req.body.message.text);
+  if (req.body.message.text == '안녕') console.log('Korean match!!');
   res.send(req.body);
 });
 
