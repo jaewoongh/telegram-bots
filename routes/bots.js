@@ -13,7 +13,7 @@ var sendMessage = function(botToken, chatId, text) {
     method: 'POST',
     headers: headers,
     form: {
-      chatId: chatId,
+      chat_id: chatId,
       text: text
     }
   };
@@ -21,13 +21,8 @@ var sendMessage = function(botToken, chatId, text) {
   console.log('chatId', chatId);
   console.log('text', text);
   request(options, function(err, res, body) {
-    if (err) {
-      console.error(err);
-    }
-    console.log(res);
-    if (!err && res.statusCode == 200) {
-      console.log(body);
-    }
+    if (err) console.error(err);
+    else if (res.statusCode !== 200) console.log('Request failed', body);
   });
 };
 
@@ -37,8 +32,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/test', function(req, res) {
-  console.log(req);
-  res.send(req);
+  console.log(req.body);
+  res.send(req.body);
 });
 
 // MrDecisionBot (김결정)
