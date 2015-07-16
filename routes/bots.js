@@ -7,7 +7,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/test', function(req, res) {
-  res.json(req);
+  console.log(req);
+  res.send(req);
 });
 
 // MrDecisionBot (김결정)
