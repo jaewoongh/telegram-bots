@@ -18,6 +18,9 @@ var sendMessage = function(botToken, chatId, text) {
     }
   };
   request(options, function(err, res, body) {
+    if (err) {
+      console.error(err);
+    }
     if (!err && res.statusCode == 200) {
       console.log(body);
     }
