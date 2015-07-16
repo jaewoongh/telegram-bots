@@ -13,7 +13,12 @@ router.get('/test', function(req, res) {
 
 // MrDecisionBot (김결정)
 router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  res.render('index', { title: '김결정 (MrDecisionBot)', description: 'Only accessible via proper api call.' });
+  res.render('index', {
+    title: 'Telegram Bots',
+    botname: '김결정 (MrDecisionBot)',
+    description: '결정은 내가 한다!',
+    botkey: '68087998:AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M',
+    botkey_short: 'AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M' });
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   console.log('New!', req.body);
