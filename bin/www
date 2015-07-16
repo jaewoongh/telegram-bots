@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('TelegramBots:server');
 var http = require('http');
+var https = require('https');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var sserver = https.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -28,6 +30,10 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+sserver.listen(port);
+sserver.on('error', onError);
+sserver.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -87,4 +93,10 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+
+  var saddr = sserver.address();
+  var sbind = typeof saddr === 'string'
+      ? 'pipe ' + saddr
+      : 'port ' + saddr.port;
+  debug('Listening on ' + sbind);
 }
