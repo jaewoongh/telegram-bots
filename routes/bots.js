@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Telegram bots', description: 'Only accessible via proper api call.' });
+});
+
+router.get('/test', function(req, res) {
+  res.json(req);
 });
 
 // MrDecisionBot (김결정)
