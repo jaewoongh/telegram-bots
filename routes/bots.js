@@ -17,10 +17,14 @@ var sendMessage = function(botToken, chatId, text) {
       text: text
     }
   };
+  console.log('url', url);
+  console.log('chatId', chatId);
+  console.log('text', text);
   request(options, function(err, res, body) {
     if (err) {
       console.error(err);
     }
+    console.log(res);
     if (!err && res.statusCode == 200) {
       console.log(body);
     }
