@@ -19,7 +19,7 @@ var sendMessage = function(botToken, chatId, text) {
   };
   request(options, function(err, res, body) {
     if (!err && res.statusCode == 200) {
-
+      console.log(body);
     }
   });
 };
@@ -45,8 +45,9 @@ router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
     bottoken_short: mrDecisionBot.botToken_short });
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  var response = mrDecisionBot.handleUpdate(req.body);
+  var response = mrDecisionBot.process(req.body);
   if (response !== null) {
+    console.log('Response: ', response);
     var chatId = req.body.message.chat.id;
     sendMessage(mrDecisionBot.botToken, chatId, response);
   }
