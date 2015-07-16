@@ -53,6 +53,7 @@ router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   } else {
     var response = mrDecisionBot.process(req.body);
     if (response !== null) {
+      console.log('Final response', response);
       var chatId = req.body.message.chat.id;
       sendMessage(mrDecisionBot.botToken, chatId, response);
     }
