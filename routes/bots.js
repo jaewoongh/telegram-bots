@@ -47,11 +47,15 @@ router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
     bottoken_short: mrDecisionBot.botToken_short });
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  var response = mrDecisionBot.process(req.body);
-  console.log(req.body);
-  if (response !== null) {
+  if (req.body.message.text === '/help') {
     var chatId = req.body.message.chat.id;
-    sendMessage(mrDecisionBot.botToken, chatId, response);
+    sendMessage(mrDecisionBot.botToken, chatId, mrDecisionBot.helpMessage);
+  } else {
+    var response = mrDecisionBot.process(req.body);
+    if (response !== null) {
+      var chatId = req.body.message.chat.id;
+      sendMessage(mrDecisionBot.botToken, chatId, response);
+    }
   }
   res.send(req.body);
 });
