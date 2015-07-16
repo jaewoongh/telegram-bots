@@ -6,7 +6,6 @@
 
 var app = require('../app');
 var debug = require('debug')('TelegramBots:server');
-var http = require('http');
 var https = require('https');
 
 /**
@@ -20,8 +19,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-https.createServer(app);
+var server = https.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
