@@ -12,6 +12,7 @@ router.get('/test', function(req, res) {
 });
 
 // MrDecisionBot (김결정)
+var mrDecisionBot = require('../lib/MrDecisionBot');
 router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   res.render('index', {
     title: 'Telegram Bots',
@@ -22,7 +23,7 @@ router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   console.log(req.body.message.text);
-  if (req.body.message.text == '안녕') console.log('Korean match!!');
+  mrDecisionBot.handleUpdate(req.body);
   res.send(req.body);
 });
 
