@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Force redirect to https
 app.use(function(req, res, next) {
   if (req.headers['x-forwarded-proto'] === 'http') {
-    return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    return res.redirect(['https://', req.get('Host'), '/tb', req.url].join(''));
   }
   next();
 });
