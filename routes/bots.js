@@ -8,7 +8,11 @@ router.get('/', function(req, res, next) {
 
 // MrDecisionBot (김결정)
 router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
-  res.render('index', { title: '김결정 (MrDecisionBot)', description: 'Only accessible via proper api call.' });
+  if (req.secure) {
+    res.render('index', { title: '김결정 (MrDecisionBot)', description: 'Secure!\nOnly accessible via proper api call.' });
+  } else {
+    res.render('index', { title: '김결정 (MrDecisionBot)', description: 'Only accessible via proper api call.' });
+  }
 });
 router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
   console.log(req.body);
