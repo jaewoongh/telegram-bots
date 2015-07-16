@@ -93,10 +93,4 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-
-  var saddr = sserver.address();
-  var sbind = typeof saddr === 'string'
-      ? 'pipe ' + saddr
-      : 'port ' + saddr.port;
-  debug('Listening on ' + sbind);
 }
