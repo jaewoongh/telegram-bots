@@ -31,14 +31,14 @@ router.get('/', function(req, res) {
 
 // MrDecisionBot (김결정)
 var mrDecisionBot = require('../lib/MrDecisionBot');
-router.get(['/', tokens['MrDecisionBot'].url].join(), function(req, res) {
+router.get(['/', tokens['MrDecisionBot'].url].join(''), function(req, res) {
   res.render('index', {
     title: '김결정 (@MrDecisionBot)',
     description: '결정은 내가 한다!',
     bottoken: tokens['MrDecisionBot'].full,
     bottoken_short: tokens['MrDecisionBot'].url });
 });
-router.post(['/', tokens['MrDecisionBot'].url].join(), function(req, res) {
+router.post(['/', tokens['MrDecisionBot'].url].join(''), function(req, res) {
   if (req.body.message.text === '/help') {
     var chatId = req.body.message.chat.id;
     sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.helpMessage);
