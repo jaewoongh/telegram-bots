@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
 // MrDecisionBot (김결정)
 var mrDecisionBot = require('../lib/MrDecisionBot');
 router.get(['/', tokens['MrDecisionBot'].url].join(''), function(req, res) {
-  res.render('index', {
+  res.render('botpage', {
     title: '김결정 (@MrDecisionBot)',
     description: '결정은 내가 한다!',
     bottoken: tokens['MrDecisionBot'].full,
