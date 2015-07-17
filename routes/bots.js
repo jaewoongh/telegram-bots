@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var tokens = require('../lib/tokens.js');
 
 var request = require('request');
 var sendMessage = function(botToken, chatId, text) {
@@ -30,22 +31,22 @@ router.get('/', function(req, res) {
 
 // MrDecisionBot (김결정)
 var mrDecisionBot = require('../lib/MrDecisionBot');
-router.get('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
+router.get(['/', tokens['MrDecisionBot'].url].join(), function(req, res) {
   res.render('index', {
     title: '김결정 (@MrDecisionBot)',
     description: '결정은 내가 한다!',
-    bottoken: mrDecisionBot.botToken,
-    bottoken_short: mrDecisionBot.botToken_short });
+    bottoken: tokens['MrDecisionBot'].full,
+    bottoken_short: tokens['MrDecisionBot'].url });
 });
-router.post('/AAFSs16hJE5pqJ4nS78US0WjSUr_d97Uy1M', function(req, res) {
+router.post(['/', tokens['MrDecisionBot'].url].join(), function(req, res) {
   if (req.body.message.text === '/help') {
     var chatId = req.body.message.chat.id;
-    sendMessage(mrDecisionBot.botToken, chatId, mrDecisionBot.helpMessage);
+    sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.helpMessage);
   } else {
     var response = mrDecisionBot.process(req.body);
     if (response !== null) {
       var chatId = req.body.message.chat.id;
-      sendMessage(mrDecisionBot.botToken, chatId, response);
+      sendMessage(tokens['MrDecisionBot'].full, chatId, response);
     }
   }
   res.send(req.body);

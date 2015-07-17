@@ -1,3 +1,6 @@
+# Hide bot tokens
+/lib/tokens.js
+
 # Created by https://www.gitignore.io
 
 ### Intellij ###
