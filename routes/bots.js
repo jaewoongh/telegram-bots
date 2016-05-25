@@ -39,17 +39,19 @@ router.get(['/', tokens['MrDecisionBot'].url].join(''), function(req, res) {
     bottoken_short: tokens['MrDecisionBot'].url });
 });
 router.post(['/', tokens['MrDecisionBot'].url].join(''), function(req, res) {
-  if (req.body.message.text === '/help') {
-    var chatId = req.body.message.chat.id;
-    sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.helpMessage);
-  } else if (req.body.message.text === '/about') {
-    var chatId = req.body.message.chat.id;
-    sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.aboutText);
-  } else {
-    var response = mrDecisionBot.process(req.body);
-    if (response !== null) {
+  if (req.body.message != null) {
+    if (req.body.message.text === '/help') {
       var chatId = req.body.message.chat.id;
-      sendMessage(tokens['MrDecisionBot'].full, chatId, response);
+      sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.helpMessage);
+    } else if (req.body.message.text === '/about') {
+      var chatId = req.body.message.chat.id;
+      sendMessage(tokens['MrDecisionBot'].full, chatId, mrDecisionBot.aboutText);
+    } else {
+      var response = mrDecisionBot.process(req.body);
+      if (response !== null) {
+        var chatId = req.body.message.chat.id;
+        sendMessage(tokens['MrDecisionBot'].full, chatId, response);
+      }
     }
   }
   res.send(req.body);
